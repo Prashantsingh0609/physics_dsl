@@ -1,32 +1,42 @@
-import random  
+import random
 n = random. random()
-import random 
-n = random. randint(0,2)
-nm = ["ball","water","steam"]
+import random
+n = random. randint(0,3);
+nm = ["ball","water","steam","sun"]
 class Stuff:
     def __init__(self, name, matter):
         self.name = name
         self.matter = matter
-    def description(self):
-        return f"{self.name} is {self.matter} in nature" 
+    def __str__(self):
+        return f"{self.name} is {self.matter} in nature"
 ball = Stuff(nm[0],"solid")
 water = Stuff(nm[1],"liquid")
 steam = Stuff(nm[2],"gas")
-a = "solid";
-b = "liquid";
-c = "gas";
-d = "plasma";
-print(f"{nm[n]} is a ___?")
-print (f"a.{a}")
-print (f"b.{b}")
-print (f"c.{c}")
-print (f"d.{d}")
-choice = input("Choose from a,b,c,d: ")
-print(choice)
-choice = ord(choice)-ord('a')
-if choice == n:
-    print ("correct!")
-else:
-    print ("incorrect")
-
-
+sun = Stuff(nm[3],"plasma")
+def q_text():
+    print(f"Q.{nm[n]} is a ___?")
+    print ("a. solid")
+    print ("b. liquid")
+    print ("c. gas")
+    print ("d. plasma")
+    choice = input("Choose from a,b,c,d: ")
+    print(choice);
+    choice = int(ord(choice)-ord('a'));
+    if choice == n:
+        print ("correct!")
+        quit()
+    elif choice <0 or choice >3:
+        print("Invalid input! Please choose from 'a' 'b' 'c' 'd'")
+        q_text()
+    else:
+        print("incorrect")
+        if n == 0:
+            print(ball)
+        elif n == 1:
+            print(water)
+        elif n == 2:
+            print(steam)
+        elif n == 3:
+            print(plasma)
+        q_text()
+q_text()
